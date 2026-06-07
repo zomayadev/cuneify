@@ -1,0 +1,674 @@
+﻿[
+    {
+        "syl":  "a",
+        "sign":  "A",
+        "cp":  "U+12000",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "e",
+        "sign":  "E",
+        "cp":  "U+1208A",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "i",
+        "sign":  "I",
+        "cp":  "U+1213F",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "u",
+        "sign":  "U",
+        "cp":  "U+1230B",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "ba",
+        "sign":  "BA",
+        "cp":  "U+12040",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "bi",
+        "sign":  "BI",
+        "cp":  "U+12049",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "bu",
+        "sign":  "BU",
+        "cp":  "U+1204D",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "be",
+        "sign":  "BE",
+        "cp":  "---",
+        "status":  "MISSING",
+        "note":  "FLAG:no standard BE sign in UCD; needs OGSL verification",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "da",
+        "sign":  "DA",
+        "cp":  "U+12055",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "di",
+        "sign":  "DI",
+        "cp":  "U+12072",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "du",
+        "sign":  "DU",
+        "cp":  "U+1207A",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "de",
+        "sign":  "DE",
+        "cp":  "---",
+        "status":  "MISSING",
+        "note":  "FLAG:no standard DE sign; NE carries de2 reading per OGSL",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "ga",
+        "sign":  "GA",
+        "cp":  "U+120B5",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "gi",
+        "sign":  "GI",
+        "cp":  "U+12100",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "gu",
+        "sign":  "GU",
+        "cp":  "U+12116",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "ge",
+        "sign":  "GE22",
+        "cp":  "U+1237B",
+        "status":  "EXACT",
+        "note":  "FLAG:verify GE22 carries ge reading in OGSL",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "ha",
+        "sign":  "HA",
+        "cp":  "U+12129",
+        "status":  "EXACT",
+        "note":  "Akkadian á¸«a",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "hi",
+        "sign":  "HI",
+        "cp":  "U+1212D",
+        "status":  "EXACT",
+        "note":  "Akkadian á¸«i",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "hu",
+        "sign":  "HU",
+        "cp":  "U+12137",
+        "status":  "EXACT",
+        "note":  "Akkadian á¸«u",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "ka",
+        "sign":  "KA",
+        "cp":  "U+12157",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "ki",
+        "sign":  "KI",
+        "cp":  "U+121A0",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "ku",
+        "sign":  "KU",
+        "cp":  "U+121AA",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "ke",
+        "sign":  "KE",
+        "cp":  "---",
+        "status":  "MISSING",
+        "note":  "FLAG:no standard KE sign in UCD",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "la",
+        "sign":  "LA",
+        "cp":  "U+121B7",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "li",
+        "sign":  "LI",
+        "cp":  "U+121F7",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "lu",
+        "sign":  "LU",
+        "cp":  "U+121FB",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "le",
+        "sign":  "LE",
+        "cp":  "---",
+        "status":  "MISSING",
+        "note":  "FLAG:no standard LE sign in UCD",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "ma",
+        "sign":  "MA",
+        "cp":  "U+12220",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "me",
+        "sign":  "ME",
+        "cp":  "U+12228",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "mi",
+        "sign":  "MI",
+        "cp":  "U+1222A",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "mu",
+        "sign":  "MU",
+        "cp":  "U+1222C",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "na",
+        "sign":  "NA",
+        "cp":  "U+1223E",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "ne",
+        "sign":  "NE",
+        "cp":  "U+12248",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "ni",
+        "sign":  "NI",
+        "cp":  "U+1224C",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "nu",
+        "sign":  "NU",
+        "cp":  "U+12261",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "pa",
+        "sign":  "PA",
+        "cp":  "U+1227A",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "pi",
+        "sign":  "PI",
+        "cp":  "U+1227F",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "pu",
+        "sign":  "PU",
+        "cp":  "---",
+        "status":  "MISSING",
+        "note":  "FLAG:no PU sign; BU carries pu2 reading per OGSL",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "pe",
+        "sign":  "PE",
+        "cp":  "---",
+        "status":  "MISSING",
+        "note":  "FLAG:no standard PE sign in UCD",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "ra",
+        "sign":  "RA",
+        "cp":  "U+1228F",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "ri",
+        "sign":  "RI",
+        "cp":  "U+12291",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "ru",
+        "sign":  "RU",
+        "cp":  "U+12292",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "sa",
+        "sign":  "SA",
+        "cp":  "U+12293",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "si",
+        "sign":  "SI",
+        "cp":  "U+122DB",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "su",
+        "sign":  "SU",
+        "cp":  "U+122E2",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "se",
+        "sign":  "SE",
+        "cp":  "---",
+        "status":  "MISSING",
+        "note":  "FLAG:no standard SE sign in UCD",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "sha",
+        "sign":  "SHA",
+        "cp":  "U+122AD",
+        "status":  "EXACT",
+        "note":  "Akkadian Å¡a",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "she",
+        "sign":  "SHE",
+        "cp":  "U+122BA",
+        "status":  "EXACT",
+        "note":  "Akkadian Å¡e",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "shi",
+        "sign":  "SHI",
+        "cp":  "---",
+        "status":  "MISSING",
+        "note":  "FLAG:no SHI sign in UCD; Å¡i has no single canonical sign",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "shu",
+        "sign":  "SHU",
+        "cp":  "U+122D7",
+        "status":  "EXACT",
+        "note":  "Akkadian Å¡u",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "ta",
+        "sign":  "TA",
+        "cp":  "U+122EB",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "te",
+        "sign":  "TE",
+        "cp":  "U+122FC",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "ti",
+        "sign":  "TI",
+        "cp":  "U+122FE",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "tu",
+        "sign":  "TU",
+        "cp":  "U+12305",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "za",
+        "sign":  "ZA",
+        "cp":  "U+1235D",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "ze",
+        "sign":  "ZE2",
+        "cp":  "U+12362",
+        "status":  "EXACT",
+        "note":  "FLAG:verify ZE2 carries ze reading in OGSL",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "zi",
+        "sign":  "ZI",
+        "cp":  "U+12363",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "zu",
+        "sign":  "ZU",
+        "cp":  "U+1236A",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "ab",
+        "sign":  "AB",
+        "cp":  "U+1200A",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "ad",
+        "sign":  "AD",
+        "cp":  "U+1201C",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "ak",
+        "sign":  "AK",
+        "cp":  "U+1201D",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "al",
+        "sign":  "AL",
+        "cp":  "U+12020",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "am",
+        "sign":  "AM",
+        "cp":  "---",
+        "status":  "MISSING",
+        "note":  "FLAG:no AM sign; check IM for am reading",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "an",
+        "sign":  "AN",
+        "cp":  "U+1202D",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "ar",
+        "sign":  "AR",
+        "cp":  "---",
+        "status":  "MISSING",
+        "note":  "FLAG:no standalone AR sign in UCD",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "as",
+        "sign":  "AS",
+        "cp":  "---",
+        "status":  "MISSING",
+        "note":  "FLAG:no AS sign; ASH exists but is different",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "at",
+        "sign":  "AT",
+        "cp":  "---",
+        "status":  "MISSING",
+        "note":  "FLAG:no AT sign in UCD",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "el",
+        "sign":  "EL",
+        "cp":  "U+12096",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "em",
+        "sign":  "EM",
+        "cp":  "---",
+        "status":  "MISSING",
+        "note":  "FLAG:no EM sign in UCD",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "en",
+        "sign":  "EN",
+        "cp":  "U+12097",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "er",
+        "sign":  "ER",
+        "cp":  "---",
+        "status":  "MISSING",
+        "note":  "FLAG:no ER sign in UCD",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "ib",
+        "sign":  "IB",
+        "cp":  "U+12141",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "ig",
+        "sign":  "IG",
+        "cp":  "U+12145",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "il",
+        "sign":  "IL",
+        "cp":  "U+1214B",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "im",
+        "sign":  "IM",
+        "cp":  "U+1214E",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "in",
+        "sign":  "IN",
+        "cp":  "U+12154",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "ir",
+        "sign":  "IR",
+        "cp":  "U+12155",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "ub",
+        "sign":  "UB",
+        "cp":  "U+12312",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "ud",
+        "sign":  "UD",
+        "cp":  "U+12313",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "ul",
+        "sign":  "UL",
+        "cp":  "---",
+        "status":  "MISSING",
+        "note":  "FLAG:no UL sign in UCD",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "um",
+        "sign":  "UM",
+        "cp":  "U+1231D",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "un",
+        "sign":  "UN",
+        "cp":  "U+12326",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "ur",
+        "sign":  "UR",
+        "cp":  "U+12328",
+        "status":  "EXACT",
+        "note":  "",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    },
+    {
+        "syl":  "us",
+        "sign":  "US",
+        "cp":  "---",
+        "status":  "MISSING",
+        "note":  "FLAG:no US sign; USH exists but is different",
+        "source":  "unicode.org/Public/UCD/latest/ucd/UnicodeData.txt (fetched 2026-06-06)"
+    }
+]

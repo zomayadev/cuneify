@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cuneify</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Cuneiform&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  /* ═══════════════════════════════════════════════════════
+     THEME TOGGLE — change only these two variables:
+       Lapis-blue (default): --page-bg: #091d5a;  --band-bg: #0d2878;
+       Warm cream:           --page-bg: #f2e8d5;  --band-bg: #e0cfa0;
+     ═══════════════════════════════════════════════════════ */
+  :root {
+    --page-bg:   #091d5a;
+    --band-bg:   #0d2878;
+    --band-line: #c9a227;
+    --cream:     #f0e0b8;
+    --gold:      #c9a227;
+    --gold-hi:   #f0c844;
+    --sub:       #2ea8a8;
+    --flag:      #c06830;
+    --panel-bg:  #060e38;   /* inset relief panel — slightly darker blue */
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--page-bg);
+    color: var(--cream);
+    font-family: 'Noto Serif', Georgia, serif;
+    min-height: 100vh;
+    display: flex; flex-direction: column; align-items: stretch;
+  }
+
+  /* ── Header ──────────────────────────────────────────── */
+  header {
+    position: relative; width: 100%; height: 200px;
+    overflow: hidden;
+    display: flex; align-items: flex-end; justify-content: center;
+  }
+  .header-img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center 30%;
+    filter: saturate(1.1) brightness(.8);
+  }
+  .header-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom,
+      rgba(9,29,90,.05) 0%,
+      rgba(9,29,90,.60) 55%,
+      rgba(9,29,90,.97) 100%);
+  }
+  .header-text {
+    position: relative; z-index: 1;
+    text-align: center; padding: 0 1rem 1.2rem;
+  }
+  h1 {
+    font-size: 2.8rem; font-weight: 700; letter-spacing: .22em;
+    color: var(--gold-hi);
+    text-shadow: 0 2px 20px rgba(0,0,0,.8), 0 0 40px rgba(240,200,68,.2);
+    margin-bottom: .15rem;
+  }
+  .tagline { font-size: .78rem; font-style: italic; color: #9a7f50; letter-spacing: .08em; }
+
+  /* ── Rosette frieze ──────────────────────────────────── */
+  .band {
+    width: 100%; height: 44px; flex-shrink: 0;
+    background: var(--band-bg);
+    border-top: 2px solid var(--band-line);
+    border-bottom: 2px solid var(--band-line);
+    overflow: hidden;
+  }
+  .band svg { display: block; width: 100%; height: 100%; }
+
+  /* ── Main layout ─────────────────────────────────────── */
+  main {
+    flex: 1;
+    display: flex; flex-direction: column; align-items: center;
+    padding: 2.4rem 1rem 0;
+  }
+
+  /* Content column — input, panel, xlit, buttons, legend */
+  .content-col {
+    width: 100%; max-width: 660px;
+    display: flex; flex-direction: column; align-items: center;
+    padding-bottom: 2.4rem;
+  }
+
+  /* ── Name input ─────────────────────────────────────── */
+  #nameInput {
+    width: 100%; max-width: 420px;
+    padding: .6rem 1.1rem;
+    font-size: 1.3rem; font-family: 'Noto Serif', Georgia, serif;
+    background: rgba(0,0,0,.32);
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    color: var(--cream);
+    outline: none; text-align: center; letter-spacing: .05em;
+    transition: border-color .2s, box-shadow .2s;
+    margin-bottom: 1.5rem;
+  }
+  #nameInput::placeholder { color: #384870; }
+  #nameInput:focus {
+    border-color: var(--gold-hi);
+    box-shadow: 0 0 0 3px rgba(201,162,39,.18);
+  }
+
+  /* ── Inset relief panel — glazed-brick frame ─────────── */
+  .relief-panel {
+    width: 100%;
+    background: var(--panel-bg);
+    border: 2.5px solid var(--gold);
+    border-radius: 2px;
+    box-shadow:
+      inset 0 4px 20px rgba(0,0,0,.65),
+      inset 0 1px 6px rgba(0,0,0,.4),
+      0 1px 0 rgba(201,162,39,.15);
+    padding: 1.4rem 1.8rem;
+    margin-bottom: 1rem;
+    min-height: 7rem;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  /* ── Sign row ────────────────────────────────────────── */
+  #sign-row {
+    display: flex; flex-wrap: wrap;
+    gap: .25rem .8rem;
+    justify-content: center;
+    width: 100%;
+  }
+  .sign-cell {
+    display: flex; flex-direction: column; align-items: center; gap: .2rem;
+    padding: .5rem .6rem .35rem;
+    cursor: default; position: relative;
+    border-radius: 2px;
+    transition: background .12s;
+  }
+  .sign-cell:hover { background: rgba(201,162,39,.08); }
+  .sign-glyph {
+    font-family: 'Noto Sans Cuneiform', serif;
+    font-size: 3rem; line-height: 1;
+    color: var(--gold-hi);
+    transition: text-shadow .12s;
+  }
+  .sign-cell:hover .sign-glyph { text-shadow: 0 0 18px rgba(240,200,68,.45); }
+  .sign-glyph.flag  { color: var(--flag); }
+  .sign-glyph.subst { color: var(--sub); }
+  .sign-xlit {
+    font-size: .65rem; font-style: italic;
+    color: #9a8040; letter-spacing: .04em;
+  }
+  .sign-xlit.flag  { color: var(--flag); opacity: .8; }
+  .sign-xlit.subst { color: var(--sub); opacity: .8; }
+
+  /* ── Transliteration line ───────────────────────────── */
+  #xlit-line {
+    font-size: .95rem; font-style: italic;
+    letter-spacing: .14em; color: var(--gold);
+    margin-bottom: 1.3rem; margin-top: .2rem;
+  }
+
+  /* ── Download / copy buttons ────────────────────────── */
+  #dl-bar {
+    display: none; gap: .6rem; justify-content: center;
+    margin-bottom: 1rem; flex-wrap: wrap;
+  }
+  #dl-bar.visible { display: flex; }
+  .btn {
+    display: flex; align-items: center; gap: .45rem;
+    padding: .48rem 1.2rem; border-radius: 2px; cursor: pointer;
+    font-family: 'Noto Serif', Georgia, serif;
+    font-size: .82rem; letter-spacing: .05em;
+    transition: opacity .15s, box-shadow .15s;
+  }
+  .btn-dl   { background: var(--gold); color: #091d5a; border: none; font-weight: 700; }
+  .btn-copy { background: transparent; border: 1px solid var(--gold); color: var(--gold); }
+  .btn:hover  { opacity: .82; box-shadow: 0 2px 10px rgba(0,0,0,.35); }
+  .btn:active { opacity: .62; }
+  .btn svg { flex-shrink: 0; }
+
+  /* ── Substitution notes ──────────────────────────────── */
+  #notes {
+    font-size: .73rem; color: #8a8848;
+    text-align: center; max-width: 520px; line-height: 1.8;
+    margin-bottom: .55rem; min-height: 1.2em;
+  }
+  #notes .flag-note  { color: var(--flag); }
+  #notes .subst-note { color: var(--sub); }
+
+  /* ── Legend ──────────────────────────────────────────── */
+  .legend {
+    display: flex; gap: 1rem; align-items: center;
+    flex-wrap: wrap; justify-content: center;
+    font-size: .65rem; color: #8a9ab8; letter-spacing: .03em;
+  }
+  .legend-item { display: flex; align-items: center; gap: .3rem; }
+  .dot {
+    display: inline-block; width: .58em; height: .58em;
+    border-radius: 50%; flex-shrink: 0;
+  }
+  .dot-ok   { background: var(--gold-hi); opacity: .5; }
+  .dot-sub  { background: var(--sub); }
+  .dot-flag { background: var(--flag); }
+
+  /* ── Lower section ───────────────────────────────────── */
+  .lower-section {
+    width: 100%;
+    border-top: 1px solid rgba(201,162,39,.22);
+    display: flex; justify-content: center;
+    padding: 0 1rem 3.5rem;
+  }
+  .lower-inner {
+    width: 100%; max-width: 700px;
+    display: flex; flex-direction: column; align-items: center;
+  }
+
+  /* ── Nabu scribe figure ──────────────────────────────── */
+  .nabu-block {
+    display: flex; flex-direction: column; align-items: center;
+    gap: .7rem; padding: 2rem 0 2.4rem;
+    width: 100%;
+    border-bottom: 1px solid rgba(201,162,39,.15);
+    margin-bottom: 2.4rem;
+  }
+  .nabu-svg { width: 76px; height: auto; opacity: .88; }
+  .nabu-caption {
+    font-size: .76rem; font-style: italic;
+    color: var(--gold); opacity: .7;
+    text-align: center; letter-spacing: .04em;
+  }
+
+  /* ── Educational blocks ──────────────────────────────── */
+  .edu-blocks {
+    width: 100%;
+    display: flex; flex-direction: column; gap: 2rem;
+  }
+  .edu-block {
+    padding-bottom: 1.8rem;
+    border-bottom: 1px solid rgba(201,162,39,.1);
+  }
+  .edu-block:last-child { border-bottom: none; padding-bottom: 0; }
+  .edu-block h3 {
+    font-size: .69rem; font-weight: 700;
+    letter-spacing: .2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: .7rem;
+  }
+  .edu-block p {
+    font-size: .875rem; line-height: 1.8;
+    color: #c8b888;
+  }
+  .inline-sub  { color: var(--sub); }
+  .inline-flag { color: var(--flag); }
+
+  /* ── Tooltip ──────────────────────────────────────────── */
+  #tip {
+    position: fixed; z-index: 200;
+    background: #060e38; color: var(--cream);
+    border: 1px solid rgba(201,162,39,.5);
+    padding: .28rem .75rem; border-radius: 2px;
+    font-size: .7rem; font-family: 'Noto Serif', Georgia, serif;
+    pointer-events: none; white-space: nowrap;
+    opacity: 0; transition: opacity .12s;
+    transform: translate(-50%, calc(-100% - 10px));
+  }
+  #tip.show { opacity: 1; }
+  #tip::before {
+    content: ''; position: absolute;
+    top: 100%; left: 50%; transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: rgba(201,162,39,.5);
+  }
+  #tip::after {
+    content: ''; position: absolute;
+    top: 100%; left: 50%; transform: translateX(-50%);
+    margin-top: -1px;
+    border: 5px solid transparent;
+    border-top-color: #060e38;
+  }
+
+  /* ── Footer ───────────────────────────────────────────── */
+  footer {
+    padding: .55rem 1.5rem; text-align: center;
+    font-size: .62rem; color: #6878a0; letter-spacing: .04em;
+  }
+  footer a { color: #a08838; }
+
+  #export-canvas { display: none; }
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══════════════════════════════════════════ -->
+<header>
+  <img class="header-img"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Ishtar_Gate_at_Berlin_Museum.jpg/1200px-Ishtar_Gate_at_Berlin_Museum.jpg"
+    alt="Ishtar Gate, Pergamon Museum, Berlin">
+  <div class="header-overlay"></div>
+  <div class="header-text">
+    <h1>Cuneify</h1>
+    <p class="tagline">your name in Akkadian cuneiform</p>
+  </div>
+</header>
+
+<div class="band" id="band-top"></div>
+
+<!-- ═══ MAIN ══════════════════════════════════════════════ -->
+<main>
+  <div class="content-col">
+
+    <input id="nameInput" type="text" placeholder="type a name…"
+           autocomplete="off" spellcheck="false">
+
+    <div class="relief-panel">
+      <div id="sign-row"></div>
+    </div>
+
+    <div id="xlit-line"></div>
+
+    <div id="dl-bar">
+      <button class="btn btn-dl" id="btn-download">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M8 12l-5-5h3V2h4v5h3L8 12z"/>
+          <rect x="2" y="13" width="12" height="2"/>
+        </svg>
+        Download PNG
+      </button>
+      <button class="btn btn-copy" id="btn-copy">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"
+             stroke="currentColor" stroke-width="1.5">
+          <rect x="5" y="5" width="9" height="9" rx="1"/>
+          <path d="M11 5V3a1 1 0 00-1-1H3a1 1 0 00-1 1v7a1 1 0 001 1h2"/>
+        </svg>
+        Copy image
+      </button>
+    </div>
+
+    <div id="notes"></div>
+
+    <div class="legend">
+      <span class="legend-item"><span class="dot dot-ok"></span>attested OGSL sign</span>
+      <span class="legend-item"><span class="dot dot-sub"></span>vowel-substituted (e→i etc.)</span>
+      <span class="legend-item"><span class="dot dot-flag"></span>no canonical sign</span>
+    </div>
+
+  </div><!-- .content-col -->
+
+  <!-- Lower section — Nabu figure + educational content -->
+  <div class="lower-section">
+    <div class="lower-inner">
+
+      <!-- Nabu, divine scribe -->
+      <div class="nabu-block">
+        <svg class="nabu-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 130"
+             fill="none" stroke="#c9a227" stroke-linecap="round" stroke-linejoin="round"
+             aria-label="Gold line drawing of a Mesopotamian scribe seated with stylus and clay tablet">
+
+          <!-- Head -->
+          <circle cx="50" cy="17" r="12" fill="rgba(201,162,39,.05)" stroke-width="1.7"/>
+
+          <!-- Headdress bands across upper head -->
+          <line x1="41" y1="10" x2="59" y2="10" stroke-width="1"/>
+          <line x1="39" y1="14" x2="61" y2="14" stroke-width="1"/>
+
+          <!-- Beard (three horizontal stripes in lower face) -->
+          <line x1="45" y1="24" x2="55" y2="24" stroke-width="1"/>
+          <line x1="44" y1="27" x2="56" y2="27" stroke-width="1"/>
+          <line x1="45" y1="30" x2="55" y2="30" stroke-width="1"/>
+
+          <!-- Neck -->
+          <line x1="50" y1="29" x2="50" y2="36" stroke-width="1.7"/>
+
+          <!-- Shoulder curve (collar/neckline of robe) -->
+          <path d="M 32 43 Q 50 36 68 43" stroke-width="1.7"/>
+
+          <!-- Robe body — slight trapezoid, open at top -->
+          <path d="M 32 43 L 28 80 L 72 80 L 68 43" stroke-width="1.7"/>
+
+          <!-- Robe folds (carved-relief fabric lines) -->
+          <line x1="43" y1="47" x2="39" y2="77" stroke-width="1"/>
+          <line x1="57" y1="47" x2="61" y2="77" stroke-width="1"/>
+
+          <!-- Left arm — extends to hold the tablet -->
+          <path d="M 30 53 L 15 64 L 13 87" stroke-width="1.7"/>
+
+          <!-- Right arm — holds the stylus -->
+          <path d="M 70 53 L 84 61 L 84 75" stroke-width="1.7"/>
+
+          <!-- Clay tablet (held lower-left by left hand) -->
+          <rect x="3" y="75" width="24" height="30" rx="2"
+                fill="rgba(6,14,56,.85)" stroke-width="1.7"/>
+          <!-- Cuneiform wedge-marks on tablet -->
+          <line x1="7" y1="81" x2="22" y2="81" stroke-width="1"/>
+          <line x1="7" y1="85" x2="21" y2="85" stroke-width="1"/>
+          <line x1="7" y1="89" x2="22" y2="89" stroke-width="1"/>
+          <line x1="7" y1="93" x2="20" y2="93" stroke-width="1"/>
+
+          <!-- Stylus — long diagonal from right hand tip to tablet -->
+          <line x1="84" y1="75" x2="27" y2="85" stroke-width="1.7"/>
+          <!-- Stylus tip where it meets the tablet -->
+          <circle cx="27" cy="85" r="1.8" fill="#c9a227" stroke="none"/>
+
+          <!-- Seated legs -->
+          <path d="M 28 80 Q 18 96 20 112" stroke-width="1.7"/>
+          <path d="M 72 80 Q 82 96 80 112" stroke-width="1.7"/>
+
+          <!-- Ground / seated base -->
+          <path d="M 20 112 Q 50 121 80 112" stroke-width="1.7"/>
+          <line x1="14" y1="118" x2="86" y2="118" stroke-width="1"/>
+
+        </svg>
+        <p class="nabu-caption">Nabu, divine scribe of writing, inscribes your name.</p>
+      </div><!-- .nabu-block -->
+
+      <!-- Three educational blocks -->
+      <div class="edu-blocks">
+
+        <div class="edu-block">
+          <h3>What is Cuneiform?</h3>
+          <p>Cuneiform is one of the world's oldest writing systems, developed in ancient Mesopotamia around 3400 BCE. Scribes used a wedge-shaped reed stylus to press marks into wet clay tablets — the word <em>cuneiform</em> comes from the Latin for "wedge-shaped." Akkadian cuneiform is a syllabary: each sign represents a sound or syllable, not an individual letter. Because of this, names are written by how they sound, which is why this tool approximates your name phonetically rather than translating its meaning.</p>
+        </div>
+
+        <div class="edu-block">
+          <h3>How Cuneify Works</h3>
+          <p>Each syllable of your name is matched to an attested sign from the Oracc Global Sign List (OGSL), the authoritative scholarly catalog of cuneiform sign readings. Unicode code points are verified directly against the Unicode Character Database — no values are assumed from memory. Where the syllabary has no exact match (there is no distinct PE sign, for instance, only PI), Cuneify substitutes the closest attested reading and marks it in <span class="inline-sub">teal</span>. Signs with no reliable substitution are shown in <span class="inline-flag">amber</span> with a warning.</p>
+        </div>
+
+        <div class="edu-block">
+          <h3>Assyrians Today</h3>
+          <p>The people of ancient Mesopotamia are not a thing of the past. Assyrians are a living nation — with a continuous culture, history, and identity stretching from antiquity to the present. Modern Assyrians speak Suret (also called Neo-Aramaic), a Semitic language descended from the ancient tongues of this region. Assyrian communities are found across the Middle East, the United States, Europe, and Australia, carrying forward an unbroken thread that reaches back to the world of clay and cuneiform.</p>
+        </div>
+
+      </div><!-- .edu-blocks -->
+
+    </div><!-- .lower-inner -->
+  </div><!-- .lower-section -->
+
+</main>
+
+<div class="band" id="band-bottom"></div>
+
+<footer>
+  Sign data:&nbsp;<a href="http://oracc.museum.upenn.edu/ogsl/" target="_blank">OGSL / Oracc</a>
+  &nbsp;·&nbsp; Code points:&nbsp;<a href="https://unicode.org/charts/PDF/U12000.pdf" target="_blank">Unicode Cuneiform block</a>
+  &nbsp;·&nbsp; Gate image:&nbsp;<a href="https://commons.wikimedia.org/wiki/Ishtar_Gate" target="_blank">Wikimedia Commons</a> (public domain)
+</footer>
+
+<div id="tip"></div>
+<canvas id="export-canvas"></canvas>
+
+<script>
+// ── Rosette frieze renderer ────────────────────────────────────────
+function cssVar(name) {
+  return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+}
+function drawBand(id) {
+  const el = document.getElementById(id);
+  const W = el.offsetWidth || window.innerWidth;
+  const H = 44;
+  const bg    = cssVar('--band-bg')   || '#0d2878';
+  const gold  = cssVar('--band-line') || '#c9a227';
+  const cream = '#f0e0b8';
+
+  // ~75% of original size; contrast midpoint between prior versions
+  const sp = 50;
+  const count = Math.ceil(W / sp) + 1;
+  const petals = [0,45,90,135,180,225,270,315].map(d =>
+    `<ellipse cx="0" cy="-9" rx="3" ry="6.75"
+      fill="${cream}" opacity=".68" transform="rotate(${d})"/>`
+  ).join('');
+  const rose = petals +
+    `<circle r="4.1" fill="${gold}" opacity=".88"/>` +
+    `<circle r="1.9" fill="${cream}" opacity=".74"/>`;
+
+  let uses = '';
+  for (let i = 0; i < count; i++)
+    uses += `<g transform="translate(${sp / 2 + i * sp},${H / 2})">${rose}</g>`;
+
+  el.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">
+    <rect width="${W}" height="${H}" fill="${bg}"/>
+    ${uses}
+  </svg>`;
+}
+function refreshBands() { drawBand('band-top'); drawBand('band-bottom'); }
+window.addEventListener('resize', refreshBands);
+refreshBands();
+
+// ── Sign data ──────────────────────────────────────────────────────
+// Code points derived from UnicodeData.txt (unicode.org/Public/UCD/latest),
+// fetched 2026-06-06. Sign names from OGSL (Oracc Global Sign List).
+const SIGNS = {
+  "a":  {cp:0x12000,sign:"A"},  "e":  {cp:0x1208A,sign:"E"},
+  "i":  {cp:0x1213F,sign:"I"},  "u":  {cp:0x1230B,sign:"U"},
+  "ba": {cp:0x12040,sign:"BA"}, "bi": {cp:0x12049,sign:"BI"},
+  "bu": {cp:0x1204D,sign:"BU"},
+  "da": {cp:0x12055,sign:"DA"}, "di": {cp:0x12072,sign:"DI"},
+  "du": {cp:0x1207A,sign:"DU"},
+  "ga": {cp:0x120B5,sign:"GA"}, "gi": {cp:0x12100,sign:"GI"},
+  "gu": {cp:0x12116,sign:"GU"},
+  "ge": {cp:0x1237B,sign:"GE22",flag:"verify ge reading in OGSL"},
+  "ha": {cp:0x12129,sign:"HA"}, "hi": {cp:0x1212D,sign:"HI"},
+  "hu": {cp:0x12137,sign:"HU"},
+  "ka": {cp:0x12157,sign:"KA"}, "ki": {cp:0x121A0,sign:"KI"},
+  "ku": {cp:0x121AA,sign:"KU"},
+  "la": {cp:0x121B7,sign:"LA"}, "li": {cp:0x121F7,sign:"LI"},
+  "lu": {cp:0x121FB,sign:"LU"},
+  "ma": {cp:0x12220,sign:"MA"}, "me": {cp:0x12228,sign:"ME"},
+  "mi": {cp:0x1222A,sign:"MI"}, "mu": {cp:0x1222C,sign:"MU"},
+  "na": {cp:0x1223E,sign:"NA"}, "ne": {cp:0x12248,sign:"NE"},
+  "ni": {cp:0x1224C,sign:"NI"}, "nu": {cp:0x12261,sign:"NU"},
+  "pa": {cp:0x1227A,sign:"PA"}, "pi": {cp:0x1227F,sign:"PI"},
+  "ra": {cp:0x1228F,sign:"RA"}, "ri": {cp:0x12291,sign:"RI"},
+  "ru": {cp:0x12292,sign:"RU"},
+  "sa": {cp:0x12293,sign:"SA"}, "si": {cp:0x122DB,sign:"SI"},
+  "su": {cp:0x122E2,sign:"SU"},
+  "sha":{cp:0x122AD,sign:"SHA"},"she":{cp:0x122BA,sign:"SHE"},
+  "shu":{cp:0x122D7,sign:"SHU"},
+  "ta": {cp:0x122EB,sign:"TA"}, "te": {cp:0x122FC,sign:"TE"},
+  "ti": {cp:0x122FE,sign:"TI"}, "tu": {cp:0x12305,sign:"TU"},
+  "za": {cp:0x1235D,sign:"ZA"},
+  "ze": {cp:0x12362,sign:"ZE2",flag:"verify ze reading in OGSL"},
+  "zi": {cp:0x12363,sign:"ZI"}, "zu": {cp:0x1236A,sign:"ZU"},
+  "ab": {cp:0x1200A,sign:"AB"}, "ad": {cp:0x1201C,sign:"AD"},
+  "ak": {cp:0x1201D,sign:"AK"}, "al": {cp:0x12020,sign:"AL"},
+  "an": {cp:0x1202D,sign:"AN"}, "el": {cp:0x12096,sign:"EL"},
+  "en": {cp:0x12097,sign:"EN"}, "ib": {cp:0x12141,sign:"IB"},
+  "ig": {cp:0x12145,sign:"IG"}, "il": {cp:0x1214B,sign:"IL"},
+  "im": {cp:0x1214E,sign:"IM"}, "in": {cp:0x12154,sign:"IN"},
+  "ir": {cp:0x12155,sign:"IR"}, "ub": {cp:0x12312,sign:"UB"},
+  "ud": {cp:0x12313,sign:"UD"}, "um": {cp:0x1231D,sign:"UM"},
+  "un": {cp:0x12326,sign:"UN"}, "ur": {cp:0x12328,sign:"UR"},
+};
+
+const FALLBACKS = {
+  "be": {use:"bi",  subst:"be→bi (e→i; no BE sign)"},
+  "de": {use:"di",  subst:"de→di (e→i; no DE sign)"},
+  "ke": {use:"ki",  subst:"ke→ki (e→i; no KE sign)"},
+  "le": {use:"li",  subst:"le→li (e→i; no LE sign)"},
+  "pe": {use:"pi",  subst:"pe→pi (e→i; no PE sign)"},
+  "pu": {use:"bu",  subst:"pu→bu (BU carries pu₂ per OGSL)"},
+  "re": {use:"ri",  subst:"re→ri (e→i; no RE sign)"},
+  "se": {use:"si",  subst:"se→si (e→i; no SE sign)"},
+  "shi":{use:null,  subst:"ši: no single canonical sign"},
+  "am": {use:"im",  subst:"am→im (IM carries am per OGSL)"},
+  "ar": {use:"ir",  subst:"ar→ir (a→i; no AR sign)"},
+  "as": {use:"is",  subst:"as→is (a→i; no AS sign)", flag:true},
+  "at": {use:"it",  subst:"at→it (a→i; no AT sign)", flag:true},
+  "em": {use:"im",  subst:"em→im (e→i; no EM sign)"},
+  "er": {use:"ir",  subst:"er→ir (e→i; no ER sign)"},
+  "ul": {use:"il",  subst:"ul→il (u→i; no UL sign)"},
+  "us": {use:"is",  subst:"us→is (u→i; no US sign)", flag:true},
+};
+
+// ── Pipeline ───────────────────────────────────────────────────────
+function phonemize(name) {
+  const s = name.toLowerCase().replace(/[^a-z]/g, '');
+  const t = [], push = o => t.push(o);
+  let i = 0;
+  while (i < s.length) {
+    const two = s.slice(i, i+2);
+    if(two==='sh'){push({ph:'sh',type:'C'});i+=2;continue;}
+    if(two==='th'){push({ph:'t', type:'C',note:'th→t'});i+=2;continue;}
+    if(two==='ch'){push({ph:'k', type:'C',note:'ch→k'});i+=2;continue;}
+    if(two==='ph'){push({ph:'p', type:'C',note:'ph→p'});i+=2;continue;}
+    if(two==='qu'){push({ph:'k', type:'C'});i+=2;continue;}
+    if(two==='ck'){push({ph:'k', type:'C'});i+=2;continue;}
+    if(two==='gh'){
+      if(i+2>=s.length||s[i+2]==='t'){i+=2;continue;}
+      push({ph:'g',type:'C'});i+=2;continue;
+    }
+    if(two==='ng'){push({ph:'n',type:'C'});push({ph:'g',type:'C'});i+=2;continue;}
+    const c = s[i];
+    if(c==='a')      push({ph:'a',type:'V'});
+    else if(c==='e') push({ph:'e',type:'V'});
+    else if(c==='i') push({ph:'i',type:'V'});
+    else if(c==='o') push({ph:'u',type:'V',note:'o→u'});
+    else if(c==='u') push({ph:'u',type:'V'});
+    else if(c==='y') push({ph:'i',type:'V',note:'y→i'});
+    else if(c==='b') push({ph:'b',type:'C'});
+    else if(c==='c') push({ph:(s[i+1]==='e'||s[i+1]==='i'||s[i+1]==='y')?'s':'k',type:'C'});
+    else if(c==='d') push({ph:'d',type:'C'});
+    else if(c==='f') push({ph:'p',type:'C',note:'f→p'});
+    else if(c==='g') push({ph:'g',type:'C'});
+    else if(c==='h') push({ph:'h',type:'C'});
+    else if(c==='j') push({ph:'i',type:'V',note:'j→i'});
+    else if(c==='k') push({ph:'k',type:'C'});
+    else if(c==='l') push({ph:'l',type:'C'});
+    else if(c==='m') push({ph:'m',type:'C'});
+    else if(c==='n') push({ph:'n',type:'C'});
+    else if(c==='p') push({ph:'p',type:'C'});
+    else if(c==='q') push({ph:'k',type:'C'});
+    else if(c==='r') push({ph:'r',type:'C'});
+    else if(c==='s') push({ph:'s',type:'C'});
+    else if(c==='t') push({ph:'t',type:'C'});
+    else if(c==='v') push({ph:'b',type:'C',note:'v→b'});
+    else if(c==='w') push({ph:'u',type:'V',note:'w→u'});
+    else if(c==='x'){push({ph:'k',type:'C',note:'x→ks'});push({ph:'s',type:'C'});}
+    else if(c==='z') push({ph:'z',type:'C'});
+    i++;
+  }
+  return t;
+}
+
+function dedup(t) {
+  return t.filter((tok, i) => {
+    if (!i) return true;
+    const p = t[i-1];
+    return !(p.type === tok.type && p.ph === tok.ph);
+  });
+}
+
+function echofill(t) {
+  const out = [];
+  for (let i = 0; i < t.length; i++) {
+    out.push(t[i]);
+    const nextC = i+1 < t.length && t[i+1].type === 'C';
+    const lastC = i+1 === t.length && t[i].type === 'C';
+    if (t[i].type === 'C' && (nextC || lastC)) {
+      let v = 'a';
+      for (let j = out.length-2; j >= 0; j--) if (out[j].type === 'V') { v = out[j].ph; break; }
+      out.push({ph:v, type:'V', echo:true});
+    }
+  }
+  return out;
+}
+
+function syllabify(t) {
+  const s = []; let i = 0;
+  while (i < t.length) {
+    const tok = t[i];
+    if (tok.type === 'V') {
+      const nC = t[i+1], aC = t[i+2];
+      if (nC && nC.type==='C' && aC && aC.type==='V') { s.push(tok.ph); i++; }
+      else if (nC && nC.type==='C') { s.push(tok.ph + nC.ph); i+=2; }
+      else { s.push(tok.ph); i++; }
+    } else {
+      const nV = t[i+1];
+      if (nV && nV.type==='V') { s.push(tok.ph + nV.ph); i+=2; }
+      else i++;
+    }
+  }
+  return s;
+}
+
+function resolve(syls) {
+  return syls.map(key => {
+    if (SIGNS[key]) {
+      const e = SIGNS[key];
+      return {xlit:key, cp:e.cp, sign:e.sign,
+              status:e.flag?'flag':'ok', note:e.flag||''};
+    }
+    if (FALLBACKS[key]) {
+      const fb = FALLBACKS[key];
+      if (!fb.use) return {xlit:key, cp:null, sign:null, status:'flag', note:fb.subst};
+      const e = SIGNS[fb.use];
+      if (e) return {xlit:fb.use, cp:e.cp, sign:e.sign,
+                     status:fb.flag?'flag':'subst', note:fb.subst};
+    }
+    return {xlit:key, cp:null, sign:null, status:'flag', note:`[${key}]: no sign`};
+  });
+}
+
+// ── Tooltip ────────────────────────────────────────────────────────
+const tip = document.getElementById('tip');
+function showTip(x, y, html) {
+  tip.innerHTML = html;
+  tip.style.left = x + 'px';
+  tip.style.top  = y + 'px';
+  tip.classList.add('show');
+}
+function hideTip() { tip.classList.remove('show'); }
+
+const signRowEl = document.getElementById('sign-row');
+signRowEl.addEventListener('mousemove', ev => {
+  const cell = ev.target.closest('.sign-cell');
+  if (!cell || !cell.dataset.sign) { hideTip(); return; }
+  showTip(ev.clientX, ev.clientY - 10, cell.dataset.tip);
+});
+signRowEl.addEventListener('mouseleave', hideTip);
+signRowEl.addEventListener('touchstart', ev => {
+  const cell = ev.target.closest('.sign-cell');
+  if (!cell || !cell.dataset.sign) return;
+  const t = ev.touches[0];
+  showTip(t.clientX, t.clientY - 10, cell.dataset.tip);
+}, {passive:true});
+document.addEventListener('touchstart', ev => {
+  if (!ev.target.closest('.sign-cell')) hideTip();
+}, {passive:true});
+
+// ── Page render ────────────────────────────────────────────────────
+let currentName = '', currentEntries = [];
+
+function renderPage(name) {
+  currentName = name;
+  const signRow  = document.getElementById('sign-row');
+  const xlitLine = document.getElementById('xlit-line');
+  const notesEl  = document.getElementById('notes');
+  const dlBar    = document.getElementById('dl-bar');
+  signRow.innerHTML = ''; xlitLine.textContent = ''; notesEl.innerHTML = '';
+
+  if (!name.trim()) { dlBar.classList.remove('visible'); return; }
+
+  const entries = resolve(syllabify(echofill(dedup(phonemize(name)))));
+  currentEntries = entries;
+
+  entries.forEach(e => {
+    const cell = document.createElement('div');
+    cell.className = 'sign-cell';
+
+    const glyph = document.createElement('div');
+    glyph.className = 'sign-glyph ' + e.status;
+    glyph.textContent = e.cp !== null ? String.fromCodePoint(e.cp) : '⚠';
+
+    const xlit = document.createElement('div');
+    xlit.className = 'sign-xlit ' + e.status;
+    xlit.textContent = e.xlit;
+
+    if (e.sign && e.cp !== null) {
+      const hex = e.cp.toString(16).toUpperCase().padStart(5, '0');
+      cell.dataset.sign = e.sign;
+      cell.dataset.tip  = `<strong>${e.sign}</strong> &middot; <em>${e.xlit}</em> &middot; U+${hex}`;
+    } else {
+      cell.dataset.sign = '?';
+      cell.dataset.tip  = e.note || e.xlit;
+    }
+
+    cell.appendChild(glyph);
+    cell.appendChild(xlit);
+    signRow.appendChild(cell);
+  });
+
+  xlitLine.textContent = entries.map(e => e.xlit).join('-');
+  dlBar.classList.add('visible');
+
+  const lines = [];
+  entries.filter(e => e.status === 'subst').forEach(e =>
+    lines.push(`<span class="subst-note">${e.note}</span>`));
+  entries.filter(e => e.status === 'flag').forEach(e =>
+    lines.push(`<span class="flag-note">⚠ ${e.note}</span>`));
+  if (lines.length) notesEl.innerHTML = lines.join(' &nbsp;·&nbsp; ');
+}
+
+document.getElementById('nameInput').addEventListener('input', e => renderPage(e.target.value));
+
+// ── Canvas export — transparent PNG, signs only ────────────────────
+async function buildCanvas() {
+  await document.fonts.ready;
+
+  const glyphs = currentEntries.filter(e => e.cp !== null)
+    .map(e => String.fromCodePoint(e.cp)).join(' ');
+
+  const probe = document.createElement('canvas');
+  probe.width = 4000; probe.height = 600;
+  const px = probe.getContext('2d');
+  let cSize = 220;
+  px.font = `${cSize}px "Noto Sans Cuneiform"`;
+  while (px.measureText(glyphs).width > 1600 && cSize > 60) {
+    cSize -= 8;
+    px.font = `${cSize}px "Noto Sans Cuneiform"`;
+  }
+  const textW = px.measureText(glyphs).width;
+
+  const pad = Math.round(cSize * 0.55);
+  const W = Math.round(textW + pad * 2);
+  const H = Math.round(cSize * 1.35 + pad * 2);
+
+  const canvas = document.getElementById('export-canvas');
+  canvas.width = W; canvas.height = H;
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, W, H);
+
+  ctx.shadowColor   = 'rgba(0,0,0,0.55)';
+  ctx.shadowBlur    = Math.round(cSize * 0.16);
+  ctx.shadowOffsetY = Math.round(cSize * 0.05);
+  ctx.font         = `${cSize}px "Noto Sans Cuneiform"`;
+  ctx.fillStyle    = '#f0c844';
+  ctx.textAlign    = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(glyphs, W / 2, H / 2);
+  ctx.shadowColor  = 'transparent';
+  return canvas;
+}
+
+document.getElementById('btn-download').addEventListener('click', async () => {
+  const canvas = await buildCanvas();
+  canvas.toBlob(blob => {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `cuneify-${currentName.toLowerCase().replace(/\s+/g, '-')}.png`;
+    a.click();
+    URL.revokeObjectURL(url);
+  }, 'image/png');
+});
+
+document.getElementById('btn-copy').addEventListener('click', async () => {
+  const btn = document.getElementById('btn-copy');
+  const orig = btn.innerHTML;
+  try {
+    const canvas = await buildCanvas();
+    canvas.toBlob(async blob => {
+      await navigator.clipboard.write([new ClipboardItem({'image/png': blob})]);
+      btn.textContent = 'Copied!';
+      setTimeout(() => { btn.innerHTML = orig; }, 2000);
+    }, 'image/png');
+  } catch {
+    btn.textContent = 'Not supported in this browser';
+    setTimeout(() => { btn.innerHTML = orig; }, 2500);
+  }
+});
+
+renderPage('Gilgamesh');
+</script>
+</body>
+</html>
