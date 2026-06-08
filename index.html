@@ -224,10 +224,10 @@
   /* ── Nabu scribe figure ──────────────────────────────── */
   .nabu-block {
     display: flex; flex-direction: column; align-items: center;
-    gap: .7rem; padding: 2rem 0 2.4rem;
+    gap: .5rem; padding: .8rem 0 1.2rem;
     width: 100%;
     border-bottom: 1px solid rgba(201,162,39,.15);
-    margin-bottom: 2.4rem;
+    margin-bottom: 1rem;
   }
   .nabu-svg { width: 76px; height: auto; opacity: .88; }
   .nabu-caption {
@@ -314,49 +314,8 @@
 <main>
   <div class="content-col">
 
-    <input id="nameInput" type="text" placeholder="type a name…"
-           autocomplete="off" spellcheck="false">
-
-    <div class="relief-panel">
-      <div id="sign-row"></div>
-    </div>
-
-    <div id="xlit-line"></div>
-
-    <div id="dl-bar">
-      <button class="btn btn-dl" id="btn-download">
-        <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor">
-          <path d="M8 12l-5-5h3V2h4v5h3L8 12z"/>
-          <rect x="2" y="13" width="12" height="2"/>
-        </svg>
-        Download PNG
-      </button>
-      <button class="btn btn-copy" id="btn-copy">
-        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"
-             stroke="currentColor" stroke-width="1.5">
-          <rect x="5" y="5" width="9" height="9" rx="1"/>
-          <path d="M11 5V3a1 1 0 00-1-1H3a1 1 0 00-1 1v7a1 1 0 001 1h2"/>
-        </svg>
-        Copy image
-      </button>
-    </div>
-
-    <div id="notes"></div>
-
-    <div class="legend">
-      <span class="legend-item"><span class="dot dot-ok"></span>attested OGSL sign</span>
-      <span class="legend-item"><span class="dot dot-sub"></span>vowel-substituted (e→i etc.)</span>
-      <span class="legend-item"><span class="dot dot-flag"></span>no canonical sign</span>
-    </div>
-
-  </div><!-- .content-col -->
-
-  <!-- Lower section — Nabu figure + educational content -->
-  <div class="lower-section">
-    <div class="lower-inner">
-
-      <!-- Nabu, divine scribe -->
-      <div class="nabu-block">
+    <!-- Nabu, divine scribe -->
+    <div class="nabu-block">
         <svg class="nabu-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 130"
              fill="none" stroke="#c9a227" stroke-linecap="round" stroke-linejoin="round"
              aria-label="Gold line drawing of a Mesopotamian scribe seated with stylus and clay tablet">
@@ -417,6 +376,47 @@
         </svg>
         <p class="nabu-caption">Nabu, divine scribe of writing, inscribes your name.</p>
       </div><!-- .nabu-block -->
+
+    <input id="nameInput" type="text" placeholder="type a name…"
+           autocomplete="off" spellcheck="false">
+
+    <div class="relief-panel">
+      <div id="sign-row"></div>
+    </div>
+
+    <div id="xlit-line"></div>
+
+    <div id="dl-bar">
+      <button class="btn btn-dl" id="btn-download">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M8 12l-5-5h3V2h4v5h3L8 12z"/>
+          <rect x="2" y="13" width="12" height="2"/>
+        </svg>
+        Download PNG
+      </button>
+      <button class="btn btn-copy" id="btn-copy">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"
+             stroke="currentColor" stroke-width="1.5">
+          <rect x="5" y="5" width="9" height="9" rx="1"/>
+          <path d="M11 5V3a1 1 0 00-1-1H3a1 1 0 00-1 1v7a1 1 0 001 1h2"/>
+        </svg>
+        Copy image
+      </button>
+    </div>
+
+    <div id="notes"></div>
+
+    <div class="legend">
+      <span class="legend-item"><span class="dot dot-ok"></span>attested OGSL sign</span>
+      <span class="legend-item"><span class="dot dot-sub"></span>vowel-substituted (e→i etc.)</span>
+      <span class="legend-item"><span class="dot dot-flag"></span>no canonical sign</span>
+    </div>
+
+  </div><!-- .content-col -->
+
+  <!-- Lower section — Nabu figure + educational content -->
+  <div class="lower-section">
+    <div class="lower-inner">
 
       <!-- Three educational blocks -->
       <div class="edu-blocks">
